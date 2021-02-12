@@ -18,7 +18,7 @@ CMD [ "/usr/local/bin/start.sh" ]
 COPY ./scripts/container/ /usr/local/bin/
 
 COPY ./html/ /var/www/html/
-CMD [ git clone https://github.com/kellerben/dudle.git /var/www/html/cgi-bin/ ]
+RUN git clone https://github.com/kellerben/dudle.git /var/www/html/cgi-bin/
 
 RUN sed -i \
         -e 's/^<Directory "\/var\/www\/html">/<Directory "\/var\/www\/html-original">/g' \
