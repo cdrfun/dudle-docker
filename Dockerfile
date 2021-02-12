@@ -37,8 +37,9 @@ RUN chmod -R go-w /var/www/html/cgi-bin
 RUN chgrp apache /var/www/html/cgi-bin
 RUN chmod 775 /var/www/html/cgi-bin
 
-RUN cd /var/www/html/cgi-bin && \
-    for i in locale/?? locale/??_??; do \
-        wget -O $i/dudle.mo https://dudle.inf.tu-dresden.de/locale/`basename $i`/dudle.mo; \
-    done
+# Locales are in git repo already?
+#RUN cd /var/www/html/cgi-bin && \
+#    for i in locale/?? locale/??_??; do \
+#        wget -O $i/dudle.mo https://dudle.inf.tu-dresden.de/locale/`basename $i`/dudle.mo; \
+#    done
 
