@@ -1,0 +1,24 @@
+name: 'build-docker'
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+  workflow_dispatch: # on button click
+
+jobs:
+  build:
+    name: 'Build'
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Build:checkout"
+        uses: actions/checkout@v2
+      - name: 'Build:dockerimage'
+        uses: docker/build-push-action@v1
+        with:
+          registry: ghcr.io
+          username: "cdrfun"
+          password: ${{ secrets.PAT }}
+          repository: cdrfun/dudle-docker
+          tags: latest
